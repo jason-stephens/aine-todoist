@@ -28,6 +28,16 @@ Subscribe to my YouTube channel here: http://bit.ly/CognitiveSurge where I build
    ```
    The application will open at `http://localhost:3000`
 
+### Running Tests
+
+The project includes a comprehensive test suite using React Testing Library. To run the tests:
+
+```bash
+npm test
+```
+
+This will start the test runner in watch mode. Tests are located in `src/__tests__/` and cover components like AddProject, AddTask, App, Checkbox, Header, and more.
+
 ### Available Scripts
 
 - `npm start` - Run the development server
