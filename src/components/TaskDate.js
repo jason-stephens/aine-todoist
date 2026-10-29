@@ -1,10 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import moment from 'moment';
-import { FaSpaceShuttle, FaSun, FaRegPaperPlane } from 'react-icons/fa';
+import { FaSpaceShuttle, FaSun, FaRegPaperPlane, FaCalendarAlt } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 
-export const TaskDate = ({ setTaskDate, showTaskDate, setShowTaskDate }) =>
-  showTaskDate && (
+export const TaskDate = ({ setTaskDate, showTaskDate, setShowTaskDate }) => {
+  const [showCustomDate, setShowCustomDate] = useState(false);
+
+  const handleCustomDateChange = (e) => {
+    const selectedDate = e.target.value;
+    if (selectedDate) {
+      // Convert from YYYY-MM-DD to DD/MM/YYYY
+      const formattedDate = moment(selectedDate, 'YYYY-MM-DD').format('DD/MM/YYYY');
+      setTaskDate(formattedDate);
+      setShowTaskDate(false);
+      setShowCustomDate(false);
+    }
+  };
+
+  return showTaskDate ? (
     <div className="task-date" data-testid="task-date-overlay">
       <ul className="task-date__list">
         <li>
@@ -76,9 +89,38 @@ export const TaskDate = ({ setTaskDate, showTaskDate, setShowTaskDate }) =>
             <span>Next week</span>
           </div>
         </li>
+        <li>
+          <div
+            onClick={() => setShowCustomDate(!showCustomDate)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') setShowCustomDate(!showCustomDate);
+            }}
+            data-testid="task-date-custom"
+            tabIndex={0}
+            aria-label="Select a custom date for the task"
+            role="button"
+          >
+            <span>
+              <FaCalendarAlt />
+            </span>
+            <span>Custom</span>
+          </div>
+        </li>
       </ul>
+      {showCustomDate && (
+        <div className="task-date__custom" data-testid="task-date-custom-input">
+          <input
+            type="date"
+            onChange={handleCustomDateChange}
+            data-testid="task-date-custom-date-input"
+            aria-label="Enter a custom date for the task"
+            min={moment().format('YYYY-MM-DD')}
+          />
+        </div>
+      )}
     </div>
-  );
+  ) : null;
+};
 
 TaskDate.propTypes = {
   setTaskDate: PropTypes.func.isRequired,

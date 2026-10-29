@@ -665,6 +665,27 @@ header {
       }
     }
   }
+
+  &__custom {
+    padding: 10px;
+    border-top: 1px solid #f0f0f0;
+
+    input[type="date"] {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 3px;
+      font-size: 14px;
+      font-family: 'Roboto', sans-serif;
+      cursor: pointer;
+
+      &:focus {
+        outline: none;
+        border-color: $generic-bg;
+        box-shadow: 0 0 0 2px rgba(219, 76, 63, 0.1);
+      }
+    }
+  }
 }
 
 /* Project Overlay
