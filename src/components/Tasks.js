@@ -38,7 +38,12 @@ export const Tasks = () => {
         {tasks.map((task) => (
           <li key={`${task.id}`}>
             <Checkbox id={task.id} taskDesc={task.task} />
-            <span>{task.task}</span>
+            <span className="task-content">
+              <span className="task-name">{task.task}</span>
+              {task.date && (
+                <span className="task-due-date">{task.date}</span>
+              )}
+            </span>
           </li>
         ))}
       </ul>
