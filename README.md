@@ -5,3 +5,9 @@ This application (a Todoist clone) was built using create-react-app as a base, a
 Subscribe to my YouTube channel here: http://bit.ly/CognitiveSurge where I build projects like this! And don't forget, you can contribute to this project (highly encouraged!). One thing I didn't get time to do was incorporate accessibility into this application, so I'd love to see that added!
 
 ![Preview](todoist-preview.png?raw=true)
+
+## Local development checklist
+
+1. **Install dependencies** – Run `yarn install` to install all required packages
+2. **Configure Firebase** – Copy `src/firebase.js.example` to `src/firebase.js` and add your Firebase credentials
+3. **Start the development server** – Run `yarn start` to launch the app at http://localhost:3000
